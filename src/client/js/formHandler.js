@@ -16,7 +16,7 @@ function handleSubmit(event) {
         })
         .then(res => res.json())
         .then(function(res) {
-            console.log(res); 
+            // console.log(res); 
 
             document.querySelector('section.url-results #polarity').innerHTML = res.polarity
             document.querySelector('section.url-results #subjectivity').innerHTML = res.subjectivity
