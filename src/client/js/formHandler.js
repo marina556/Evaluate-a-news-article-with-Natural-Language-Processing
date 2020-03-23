@@ -1,25 +1,28 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    // check what text was put into the form field
     let formText = document.getElementById('name').value
-    // checkForName(formText)
-    Client.checkForName(formText)
-    console.log("::: Form Submitted :::")
- 
+    
     if(Client.checkForName(formText)){
-        fetch('http://localhost:8080/test',{
+        console.log("::: Form Submitted :::")
+
+        fetch('http://localhost:8080/apitest',{
             method:'POST',
+            mode:'cors',
             headers: {
                 'Content-Type': 'application/json',
             },      
-            mode:'cors',
-            body: JSON.stringify({url:formText}), 
+            body: JSON.stringify({text:formText}), 
         })
         .then(res => res.json())
         .then(function(res) {
-            document.getElementById('results').innerHTML = res.polarity
-            // .message
+            console.log(res); 
+
+            document.querySelector('section.url-results #polarity').innerHTML = res.polarity
+            document.querySelector('section.url-results #subjectivity').innerHTML = res.subjectivity
+            document.querySelector('section.url-results #polarity_confidence').innerHTML = res.polarity_confidence
+            document.querySelector('section.url-results #subjectivity_confidence').innerHTML = res.subjectivity_confidence
+            document.querySelector('section.url-results #excerpt').innerHTML = res.text
         })
     }else{
         if(formText == ''){

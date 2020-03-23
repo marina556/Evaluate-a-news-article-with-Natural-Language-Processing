@@ -22,7 +22,8 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-app.use(express.static('dist'))
+// app.use(express.static('./dist'))
+app.use(express.static(__dirname + '/dist'));
 
 console.log(__dirname)
 
@@ -30,14 +31,18 @@ app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
+app.get('/test', function (req, res) {
+  res.send(mockAPIResponse)
+});
+
 // designates what port the app will listen to for incoming requests
 app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
 })
 
-app.post('/test',(req,res)=>{
+app.post('/apitest',(req,res)=>{
     textapi.sentiment({
-      url:req.body.url,
+       'url':req.body.text,
         mode:'document'
       }, function(error, response) {
         if (error === null) {
