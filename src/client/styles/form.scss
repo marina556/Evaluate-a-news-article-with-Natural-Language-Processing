@@ -1,7 +1,9 @@
 form {
-    border: 1px solid #545454;
-    border-radius: 3px;
-    padding: 40px;
+       /* border: 1px solid #2980b9; */
+       border-radius: 9px;
+       padding: 40px;
+       background-color: #85c4ee;
+       box-shadow: 0px 1px 10px 3px #2980b9;
 }
 
 input {
@@ -9,4 +11,9 @@ input {
     width: 100%;
     line-height: 16px;
     margin: 10px 0;
+    transition: all .5s;
+    font-size: 18px;
+    // box-shadow: 0px 1px 10px 3px gray;
 }
+
+

@@ -1,21 +1,26 @@
 const request = require('supertest');
-const app = require('../server/index');
+const app = require("../server/app");
 var httpMocks = require('node-mocks-http');
 
- describe('Test root path', () => {
-    test('It should response the GET method', async () => {
-        const response = await request(app).get('/');
+describe("Test the root path", () => {
+  test("It should response the GET method", done => {
+    request(app)
+      .get("/")
+      .then(response => {
         expect(response.statusCode).toBe(200);
-    });
+        done();
+      });
+  });
 });
 
-describe('Test path "/test"', () => {
-    test('It should response the GET method', async () => {
-        const response = await request(app).get('/test');
+
+describe("Test the root path", () => {
+  test("It should response the GET method", done => {
+    request(app)
+      .get("/test")
+      .then(response => {
         expect(response.statusCode).toBe(200);
-        expect(response.body.time).toBe('now'); 
-    });
-}); 
-
-
-
+        done();
+      });
+  });
+});
